@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+
     <% if logged_in? %>
     <%= current_user.username %>
     <%= button_to "Sign Out", session_url, method: :delete %>
@@ -16,6 +17,14 @@
     <% end %>
 
   <body>
+    <img src="https://vetstreet.brightspotcdn.com/dims4/default/c2616f9/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F99%2F415260a80611e0a0d50050568d634f%2Ffile%2FSiberian-Husky-3-645mk062811.jpg" alt="Mountain View" style="width:304px;height:228px;">
+
+    <img src="http://wallpapercave.com/wp/LmOgKXz.jpg" alt="Mountain View" style="width:304px;height:228px;">
     <%= yield %>
+    <img src="http://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-3.jpg" alt="Mountain View" style="width:304px;height:228px;">
+
+      <img src="http://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-2.jpg" alt="Mountain View" style="width:304px;height:228px;">
+      <br>
+      <br>
   </body>
 </html>

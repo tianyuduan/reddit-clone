@@ -3,6 +3,23 @@ class User < ApplicationRecord
   validates :username, :password_digest, presence: true
   validates :session_token, :username, uniqueness: true
 
+  has_many :subs,
+  primary_key: :id,
+  foreign_key: :moderator_id,
+  class_name: :Sub
+
+  has_many(:posts,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: "Post"
+  )
+
+  has_many(:comments,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: "Comment"
+  )
+
   attr_reader :password
 
   validates :password, length: {minimum: 6, allow_nil: true}
@@ -13,7 +30,7 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
 
-  def reset_session_token
+  def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64(16)
     self.save
     self.session_token
@@ -29,9 +46,9 @@ class User < ApplicationRecord
   end
 
   def self.find_by_credentials(username, password)
-    @user = User.find_by(username: username)
-    return nil if @user.nil?
-    @user if @user.is_password?(password)
+    user = User.find_by(username: username)
+    return nil if user.nil?
+    return user if user.is_password?(password)
   end
 
 end

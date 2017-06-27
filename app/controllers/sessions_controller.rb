@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
     @user  = User.find_by_credentials(params[:user][:username],params[:user][:password])
     # @user = User.find_by_user(session_params)
     if @user
-      redirect_to "kvgjdkjlfbfhjfopkdbjfeokpbj"
+      login!(@user)
+      redirect_to subs_url
     else
       flash[:errors] = ["INvalid sign in credentials"]
       render :new

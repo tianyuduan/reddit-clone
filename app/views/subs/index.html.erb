@@ -1,0 +1,10 @@
+<h3>ALL THE SUB FORUMS!</h3>
+
+
+<% @subs.each do |sub| %>
+<%= link_to (sub.title).capitalize, sub_url(sub) %>
+ <br>
+ <br>
+<% end %>
+
+<%= button_to "Add Subs", new_sub_url, method: :get %>

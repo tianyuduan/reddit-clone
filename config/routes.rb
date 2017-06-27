@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resource :session
   resources :users
-  
 
+  resources :subs
+  resources :posts
+
+  resources :comments
 
 
 end

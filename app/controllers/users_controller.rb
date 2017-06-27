@@ -7,8 +7,10 @@ end
 
 def create
   @user = User.new(user_params)
+  # debugger
   if @user.save
-    redirect_to "vnsdgkljweoifjefjln"
+    login!(@user)
+    redirect_to subs_url
   else
     flash[:errors] = @user.errors.full_messages
     render :new

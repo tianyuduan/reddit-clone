@@ -1,0 +1,26 @@
+
+<h2> <%= @sub.title %> </h2>
+
+
+<br>
+Subforum Description:
+<br>
+<br>
+<%= (@sub.description).capitalize %>
+<br>
+<br>
+
+  <% @sub.posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %>
+    <br>
+  <% end %>
+
+
+<br>
+<br>
+<%= button_to "Back to SubForum", subs_url, method: :get %>
+<br>
+<%= button_to "Edit Sub", edit_sub_url, method: :get %>
+<br>
+<br>
+  <%= link_to "Add Post", new_post_url %>

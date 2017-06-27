@@ -1,0 +1,23 @@
+<h1>Edit Subform</h1>
+<form class="" action="<%= sub_url(@sub) %>" method="post">
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Title
+    <input type="text" name="sub[title]" value="<%= @sub.title %>">
+  </label>
+
+  <label>Description
+  <textarea rows="8" cols="40" name="sub[description]"><%= (@sub.description).capitalize %>
+  </textarea>
+</label>
+
+
+
+
+
+  <input type="submit" name="" value="Edit DIS">
+
+</form>

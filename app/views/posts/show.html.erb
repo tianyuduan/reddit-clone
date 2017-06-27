@@ -1,0 +1,38 @@
+BY <h3>  <%= @post.user.username %>  </h3>
+<br>
+          <%= @post.title %>
+          <br>
+          <br>
+        <a href="<%= @post.url %>">Portal to <%= @post.title %></a>
+        <br>
+          <br>
+          <%= @post.content %>
+          <br>
+          <br>
+          <%= button_to  "Back to " + @post.sub.title, sub_url(@post.sub_id), method: :get %>
+
+          <br>
+          <br>
+          <%= link_to "Edit Post", edit_post_url %>
+            <h3>Comments:</h3>
+            <br>
+          <% @post.comments.each do  |comment| %>
+          <%= (comment.user.username).capitalize %> said:
+          <br>
+          <%=  comment.content %>
+          <%= button_to "Upvote (I like this shit)", post_url(@post), method: :get  %>
+          <%= button_to "Downvote (I hate this shit)", post_url(@post), method: :get  %>
+          <%= button_to "Remove Comment", comment_url(comment), method: :delete %>
+          <br>
+          <br>
+          <% end %>
+          <h3>Add Comment</h3>
+          <form class="" action="<%= comments_url %>" method="post">
+        <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <label>Content
+            <input type="text" name="comment[content]" value="">
+          </label>
+          <input type="submit" name="" value="Add Comment">
+          </form>
